@@ -1,6 +1,3 @@
-import { useState, useEffect } from "react";
-
-const [totalSeconds, setTotalSeconds] = useState(60);
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
@@ -17,8 +14,6 @@ function App() {
       }, 1000);
     } else if (totalSeconds === 0) {
       setIsActive(false);
-      // Звуковой сигнал (опционально)
-      // new Audio('/beep.mp3').play();
     }
 
     return () => {
@@ -49,7 +44,7 @@ function App() {
       value = 60;
       setInputValue(60);
     }
-    if (value > 7200) value = 7200; // максимум 2 часа
+    if (value > 7200) value = 7200;
     setIsActive(false);
     setTotalSeconds(value);
     setInputValue(value);
@@ -71,7 +66,6 @@ function App() {
     return (totalSeconds / maxTime) * 100;
   };
 
-  // Быстрые настройки времени
   const setQuickTime = (seconds) => {
     setInputValue(seconds);
     setIsActive(false);
@@ -84,7 +78,6 @@ function App() {
         <div className="timer-icon">⏱️</div>
         <h1 className="timer-title">Таймер обратного отсчета</h1>
 
-        {/* Прогресс-бар */}
         <div className="progress-section">
           <div className="progress-bar-container">
             <div
@@ -97,10 +90,8 @@ function App() {
           </div>
         </div>
 
-        {/* Отображение времени */}
         <div className="time-display">{formatTime(totalSeconds)}</div>
 
-        {/* Статус */}
         <div className="timer-status">
           {totalSeconds === 0 ? (
             <span className="status-complete">🎉 ВРЕМЯ ВЫШЛО! 🎉</span>
@@ -111,7 +102,6 @@ function App() {
           )}
         </div>
 
-        {/* Главные кнопки */}
         <div className="button-group">
           {!isActive && totalSeconds > 0 && totalSeconds !== 0 && (
             <button className="btn btn-start" onClick={startTimer}>
@@ -128,7 +118,6 @@ function App() {
           </button>
         </div>
 
-        {/* Быстрый выбор времени */}
         <div className="quick-section">
           <p className="section-title">⚡ БЫСТРЫЙ ВЫБОР</p>
           <div className="quick-buttons">
@@ -159,7 +148,6 @@ function App() {
           </div>
         </div>
 
-        {/* Ручная настройка */}
         <div className="custom-section">
           <p className="section-title">🎯 СВОЕ ВРЕМЯ</p>
           <div className="custom-control">
@@ -181,7 +169,6 @@ function App() {
           </p>
         </div>
 
-        {/* Большие кнопки времени */}
         <div className="big-time-section">
           <p className="section-title">📊 ПОПУЛЯРНОЕ</p>
           <div className="big-buttons">
@@ -200,7 +187,6 @@ function App() {
           </div>
         </div>
 
-        {/* Анимация при завершении */}
         {totalSeconds === 0 && (
           <div className="completion-animation">⏰⏰⏰</div>
         )}
