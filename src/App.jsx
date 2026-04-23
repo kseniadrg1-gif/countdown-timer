@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 const [totalSeconds, setTotalSeconds] = useState(60);
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
