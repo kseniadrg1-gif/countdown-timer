@@ -1,0 +1,556 @@
+.timer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  padding: 16px;
+}
+
+.timer-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 32px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+  padding: 32px;
+  max-width: 550px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.timer-icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.timer-title {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #e0e0e0;
+  letter-spacing: 1px;
+}
+
+/* Прогресс */
+.progress-section {
+  margin-bottom: 30px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+  border-radius: 10px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+.progress-label {
+  font-size: 12px;
+  color: #a0a0a0;
+  text-align: right;
+}
+
+/* Время */
+.time-display {
+  font-size: 80px;
+  font-weight: bold;
+  font-family: var(--mono);
+  color: #00d2ff;
+  margin: 20px 0;
+  letter-spacing: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-radius: 20px;
+  display: inline-block;
+  width: auto;
+  min-width: 280px;
+  text-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+  word-break: keep-all;
+}
+
+/* Статус */
+.timer-status {
+  margin-bottom: 25px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.status-running {
+  color: #00d2ff;
+}
+
+.status-paused {
+  color: #ffb347;
+}
+
+.status-complete {
+  color: #ff6b6b;
+  animation: blink 1s infinite;
+}
+
+/* Кнопки */
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.btn {
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--sans);
+  flex: 1;
+  white-space: nowrap;
+}
+
+.btn-start {
+  background: linear-gradient(135deg, #00d2ff, #0088cc);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+}
+
+.btn-pause {
+  background: linear-gradient(135deg, #ffb347, #ff8c00);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 180, 71, 0.3);
+}
+
+.btn-reset {
+  background: linear-gradient(135deg, #6b6b6b, #444444);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+/* Секции */
+.section-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #a0a0a0;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.quick-section,
+.custom-section,
+.big-time-section {
+  margin-bottom: 25px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Быстрые кнопки */
+.quick-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.quick-btn {
+  padding: 8px 16px;
+  background: rgba(0, 210, 255, 0.1);
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  border-radius: 10px;
+  color: #00d2ff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.quick-btn:hover {
+  background: #00d2ff;
+  color: #0f2027;
+  transform: scale(1.05);
+}
+
+/* Ручная настройка */
+.custom-control {
+  display: flex;
+  gap: 10px;
+}
+
+.time-input {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid rgba(0, 210, 255, 0.3);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #00d2ff;
+  outline: none;
+}
+
+.time-input:focus {
+  border-color: #00d2ff;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+.btn-set {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #00d2ff, #0088cc);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.hint {
+  font-size: 11px;
+  color: #888;
+  margin-top: 8px;
+}
+
+/* Большие кнопки */
+.big-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.big-time-btn {
+  flex: 1;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.big-time-btn:hover {
+  border-color: #00d2ff;
+  transform: translateY(-3px);
+  background: rgba(0, 210, 255, 0.1);
+}
+
+.big-time {
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: var(--mono);
+  color: #00d2ff;
+}
+
+.big-label {
+  display: block;
+  font-size: 12px;
+  color: #a0a0a0;
+  margin-top: 5px;
+}
+
+/* Анимация завершения */
+.completion-animation {
+  margin-top: 20px;
+  font-size: 30px;
+  animation: shake 0.5s ease;
+}
+
+/* ======================================== */
+/*          МОБИЛЬНАЯ АДАПТАЦИЯ             */
+/* ======================================== */
+
+/* Планшеты (768px и ниже) */
+@media (max-width: 768px) {
+  .timer-card {
+    padding: 24px;
+  }
+
+  .timer-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .time-display {
+    font-size: 64px;
+    letter-spacing: 4px;
+    min-width: auto;
+    padding: 16px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .quick-buttons {
+    gap: 8px;
+  }
+
+  .quick-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Телефоны (600px и ниже) */
+@media (max-width: 600px) {
+  .timer-container {
+    padding: 12px;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  .timer-card {
+    padding: 20px;
+    border-radius: 28px;
+  }
+
+  .timer-icon {
+    font-size: 36px;
+  }
+
+  .timer-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .progress-section {
+    margin-bottom: 20px;
+  }
+
+  .progress-bar-container {
+    height: 10px;
+  }
+
+  .time-display {
+    font-size: 44px;
+    letter-spacing: 2px;
+    padding: 12px;
+    margin: 12px 0;
+  }
+
+  .timer-status {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .button-group {
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 13px;
+    min-width: 80px;
+  }
+
+  .section-title {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .quick-section,
+  .custom-section,
+  .big-time-section {
+    margin-bottom: 20px;
+    padding: 12px;
+  }
+
+  .quick-buttons {
+    gap: 8px;
+  }
+
+  .quick-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .custom-control {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .time-input {
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .btn-set {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+  .hint {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .big-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .big-time-btn {
+    padding: 12px;
+  }
+
+  .big-time {
+    font-size: 20px;
+  }
+
+  .big-label {
+    font-size: 10px;
+  }
+
+  .completion-animation {
+    font-size: 24px;
+    margin-top: 16px;
+  }
+}
+
+/* Очень маленькие телефоны (380px и ниже) */
+@media (max-width: 380px) {
+  .timer-container {
+    padding: 8px;
+  }
+
+  .timer-card {
+    padding: 16px;
+  }
+
+  .timer-title {
+    font-size: 16px;
+  }
+
+  .time-display {
+    font-size: 36px;
+    padding: 10px;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 12px;
+    min-width: 70px;
+  }
+
+  .quick-btn {
+    padding: 5px 8px;
+    font-size: 10px;
+  }
+
+  .big-time {
+    font-size: 18px;
+  }
+
+  .status-running,
+  .status-paused,
+  .status-complete {
+    font-size: 12px;
+  }
+}
+
+/* Альбомная ориентация на телефонах */
+@media (max-width: 900px) and (orientation: landscape) {
+  .timer-container {
+    padding: 12px;
+    min-height: auto;
+  }
+
+  .timer-card {
+    padding: 16px;
+  }
+
+  .timer-title {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .time-display {
+    font-size: 48px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  .quick-buttons {
+    gap: 6px;
+  }
+
+  .quick-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  .big-buttons {
+    flex-direction: row;
+  }
+
+  .button-group {
+    margin-bottom: 15px;
+  }
+}
+
+/* Ключевые кадры для анимаций */
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+/* Улучшения для touch-экранов */
+@media (hover: none) and (pointer: coarse) {
+  .btn:active,
+  .quick-btn:active,
+  .big-time-btn:active,
+  .btn-set:active {
+    transform: scale(0.97);
+    transition: transform 0.1s;
+  }
+
+  .btn:hover,
+  .quick-btn:hover,
+  .big-time-btn:hover,
+  .btn-set:hover {
+    transform: none;
+  }
+
+  button {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
